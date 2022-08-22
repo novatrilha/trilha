@@ -1,0 +1,69 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+:root {
+  --white: #F6F6F6;
+  --black: #1E1E1E;
+  --gray: #1e1e1e61;
+  --light-gray: #1e1e1e1f;
+  --red: #FF200C;
+  --yellow: #FF912B;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+
+  font-family: 'Inter';
+  font-style: normal;
+  font-size: min(1vw, 16px);
+  line-height: 130%;
+  color: var(--black);
+
+  background-color: var(--white);
+}
+
+header {
+  padding: max(3.875em, 30px) 4.5em max(5em, 40px);
+}
+
+main {
+  max-width: min(85em, 98vw);
+  margin: 0 auto;
+  padding: 0 4.5em 10em;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+button {
+  padding: .375em .75em;
+  background-color: var(--red);
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  color: var(--white);
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+button[data-secondary="true"] {
+  background-color: var(--white);
+  color: var(--gray);
+  border-color: var(--gray);
+}
+
+button[data-tertiary] {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+}
