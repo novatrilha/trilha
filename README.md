@@ -1,14 +1,25 @@
 # Trilha
+Trilha, conheça candidatos.
 
-## Developing
+## Desenvolvendo
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+Instale os pacotes localmente com `npm i` ou `yarn` e execute:
 ```bash
 npm run dev
 
-# or start the server and open the app in a new browser tab
+# para executar e abrir uma página do navegador
 npm run dev -- --open
 ```
 
-## Building
+## Build
+
+Para gerar os arquivos estáticos/finais:
+```bash
+npm run build
+```
+
+Os arquivos resultantes estarão na pasta `build`.  
+Você pode verificar o resultado com o comando abaixo:
+```bash
+npm run preview
+```
