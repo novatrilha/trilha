@@ -1,23 +1,19 @@
 <script lang="ts">
-	import CardsContainer from '$lib/CardsContainer.svelte';
-	import MainSlider from '$lib/MainSlider.svelte';
-	import SearchBar from '$lib/SearchBar.svelte';
+	import CardsContainer from "$lib/CardsContainer.svelte";
+	import MainSlider from "$lib/MainSlider.svelte";
+	import SearchBar from "$lib/SearchBar.svelte";
 
 	$: dados = {} as Dados;
 	$: candidatos = [] as Candidato[];
 
-	function load() {
-		fetch('/static/dados.json')
-			.then((dados) => dados.json())
-			.then((dadosApi: Dados) => {
-				dados = dadosApi;
-				candidatos = dados['Deputado Federal'].candidatos;
-				console.log({ dados, candidatos });
-			})
-			.catch(console.log);
-	}
-
-	load();
+	fetch("/dados.json")
+		.then((dados) => dados.json())
+		.then((dadosApi: Dados) => {
+			dados = dadosApi;
+			candidatos = dados["Deputado Federal"].candidatos;
+			console.log({ dados, candidatos });
+		})
+		.catch(console.log);
 
 	function withSearch(text: string) {
 		if (!text) return () => true;
@@ -39,7 +35,7 @@
 </script>
 
 <svelte:head>
-  <title>Nova Trilha</title>
+	<title>Nova Trilha</title>
 </svelte:head>
 
 <section>
