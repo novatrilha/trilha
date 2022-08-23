@@ -28,13 +28,11 @@
 	}
 
 	const dispatch = createEventDispatcher();
-	const dispatchUpdate = () =>
-		dispatch("filter", { text, type: typeSel.value });
 	$: {
-		dispatchUpdate();
+		dispatch("filter", { text, type: typeSel.value });
 	}
 
-	onMount(() => dispatchUpdate());
+	onMount(() => dispatch("filter", { text, type: typeSel.value }));
 </script>
 
 <div class="search-container">
@@ -49,7 +47,7 @@
 
 	<input bind:value={inputText} class="search-input" placeholder="Buscar..." />
 
-	<DropdownFilter bind:filterOptions/>
+	<DropdownFilter bind:filterOptions />
 </div>
 
 <style>
