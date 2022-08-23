@@ -37,7 +37,7 @@
 	}
 
 	img {
-		width: min(150px, 20em);
+		width: min(150px, 11em);
 	}
 
 	ul {

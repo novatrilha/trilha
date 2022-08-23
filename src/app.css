@@ -17,6 +17,8 @@ html {
   --light-gray: #1e1e1e1f;
   --red: #FF200C;
   --yellow: #FF912B;
+  --cols: 4;
+  --font-size: 16px;
 }
 
 body {
@@ -25,11 +27,43 @@ body {
 
   font-family: 'Inter';
   font-style: normal;
-  font-size: min(1vw, 16px);
+  font-size: var(--font-size);
   line-height: 130%;
   color: var(--black);
 
   background-color: var(--white);
+}
+
+@media only screen and (max-width: 1279px) {
+  :root {
+    --font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  :root {
+    --cols: 3;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  :root {
+    --cols: 2;
+    --font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --cols: 2;
+    --font-size: 9px;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  :root {
+    --font-size: 7px;
+  }
 }
 
 header {
@@ -39,7 +73,7 @@ header {
 main {
   max-width: min(85em, 98vw);
   margin: 0 auto;
-  padding: 0 4.5em 10em;
+  padding: 0 min(4.5em, 2vw) 10em;
 }
 
 .clickable {

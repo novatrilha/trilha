@@ -53,8 +53,9 @@
 <style>
 	.search-container {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
-		gap: 5em;
+		gap: 2em;
 	}
 
 	.buttons-container {
@@ -64,6 +65,7 @@
 
 	.search-input {
 		flex-grow: 1;
+		max-width: 700px;
 		color: var(--gray);
 		border: 1px solid var(--gray);
 		background: var(--white);

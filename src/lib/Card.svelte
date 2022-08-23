@@ -3,21 +3,18 @@
 </script>
 
 <div class="container">
+	<div class="image-container">
+		<img src={candidato.fotoUrl} alt="Foto do candidato" />
+		{#if candidato.st_REELEICAO}
+			<div class="badge">Reeleição</div>
+		{/if}
+	</div>
 
-  <div class="image-container">
-    <img src={candidato.fotoUrl} alt="Foto do candidato" />
-    {#if candidato.st_REELEICAO}
-    <div class="badge">Reeleição</div>
-    {/if}
-  </div>
+	<span class="nome">{candidato.nomeUrna}</span>
 
-	<div class="infos">
-		<div class="primeiro-bloco">
-			<span class="nome">{candidato.nomeUrna}</span>
-			<span class="numero">{candidato.numero}</span>
-		</div>
-
+	<div class="bloco">
 		<span class="partido">{candidato.partido.sigla}</span>
+		<span class="numero">{candidato.numero}</span>
 	</div>
 
 	<button>ir para o perfil</button>
@@ -28,15 +25,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 2.75em;
-		width: 16em;
+		gap: 1.375em;
+		width: 14em;
 		padding: 1.5em;
 		border: 1px solid var(--light-gray);
 		border-radius: 10px;
 	}
 
 	img {
-    position: relative;
+		position: relative;
 		border: 1px solid var(--light-gray);
 		border-radius: 50%;
 		min-width: 9em;
@@ -46,48 +43,36 @@
 		object-fit: cover;
 	}
 
-  .image-container {
-    position: relative;
-  }
-
-  .badge {
-    position: absolute;
-    left: calc(50% - 4ch - 22px);
-    bottom: 10px;
-    padding: 0 25px;
-    border-radius: 16px;
-    background-color: var(--yellow);
-    color: var(--black);
-    font-size: .75rem;
-  }
-
-	.infos {
+	.image-container {
+		position: relative;
 		display: flex;
-		justify-content: space-between;
-		width: 100%;
+		justify-content: center;
 	}
 
-	.primeiro-bloco {
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
+	.badge {
+		position: absolute;
+		bottom: 0.5rem;
+		width: 100%;
+		max-width: 15ch;
+		border-radius: 1em;
+		background-color: var(--yellow);
+		color: var(--black);
+		font-size: 0.75rem;
+		text-align: center;
 	}
 
 	.nome {
-		font-size: 2em;
+		font-size: 1.5em;
 		line-height: 1em;
+		text-align: center;
 	}
 
-	.numero {
-		font-size: 1em;
-	}
-
-	.partido {
-		font-size: 0.675em;
-		text-align: end;
-	}
-
-	button {
+	.bloco {
+		display: flex;
+		justify-content: space-between;
+		width: max(73%, 7em);
 		margin-top: auto;
+		font-size: 0.875em;
+		font-weight: 500;
 	}
 </style>

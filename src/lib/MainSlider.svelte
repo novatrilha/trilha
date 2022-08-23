@@ -24,9 +24,19 @@
 
 <section>
 	<div class="content-container">
-		<img class="clickable" src={ChevronLeftIcon} on:click={prevStep} />
+		<img
+			class="clickable"
+			src={ChevronLeftIcon}
+			on:click={prevStep}
+			alt="Mensagem anterior"
+		/>
 		<div class="text">{currentStep}</div>
-		<img class="clickable" src={ChevronRightIcon} on:click={nextStep} />
+		<img
+			class="clickable"
+			src={ChevronRightIcon}
+			on:click={nextStep}
+			alt="Próxima mensagem"
+		/>
 	</div>
 
 	<div class="steps-container">
@@ -51,15 +61,15 @@
 	.content-container {
 		display: flex;
 		justify-content: space-between;
-		width: 80em;
+		gap: 1em;
+		width: 100%;
 	}
 
 	.text {
 		display: flex;
 		align-items: center;
-		max-width: 90%;
-		height: 3.5em;
-		font-size: 6em;
+		max-width: min(90vw, 1000px);
+		font-size: min(6vw, 6em);
 		font-weight: 700;
 		text-align: center;
 		line-height: 1.2em;
