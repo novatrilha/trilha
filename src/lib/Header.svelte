@@ -1,24 +1,31 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-	import Logo from '../assets/logo.svg';
+	import { goto } from "$app/navigation";
+	import { page } from "$app/stores";
+	import LogoIcon from "../assets/logo.svg";
 
 	const routes = [
-		{ label: 'Início', url: '' },
-		{ label: 'Sobre', url: 'sobre' },
-		{ label: 'FAQ', url: 'faq' },
-		{ label: 'Contato', url: 'contato' }
+		{ label: "Início", url: "" },
+		{ label: "Sobre", url: "sobre" },
+		{ label: "FAQ", url: "faq" },
+		{ label: "Contato", url: "contato" },
 	];
 
 	$: console.log($page);
 </script>
 
 <header>
-	<img class="clickable" on:click={() => goto('/')} src={Logo} alt="Logo da página, Trilha" />
+	<img
+		class="clickable"
+		on:click={() => goto("/")}
+		src={LogoIcon}
+		alt="Logo da página, Trilha"
+	/>
 
 	<ul>
 		{#each routes as route}
-			<li class="clickable" class:active={$page.routeId === route.url}>{route.label}</li>
+			<li class="clickable" class:active={$page.routeId === route.url}>
+				{route.label}
+			</li>
 		{/each}
 	</ul>
 </header>
@@ -29,9 +36,9 @@
 		justify-content: space-between;
 	}
 
-  img {
-    width: min(150px, 20em);
-  }
+	img {
+		width: min(150px, 20em);
+	}
 
 	ul {
 		display: flex;

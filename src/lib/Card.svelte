@@ -17,7 +17,7 @@
 			<span class="numero">{candidato.numero}</span>
 		</div>
 
-		<span class="partido">{candidato.nomeColigacao}</span>
+		<span class="partido">{candidato.partido.sigla}</span>
 	</div>
 
 	<button>ir para o perfil</button>

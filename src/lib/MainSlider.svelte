@@ -1,8 +1,12 @@
 <script lang="ts">
-	import ChevronLeft from '../assets/chevron-left.svg';
-	import ChevronRight from '../assets/chevron-right.svg';
+	import ChevronLeftIcon from "../assets/chevron-left.svg";
+	import ChevronRightIcon from "../assets/chevron-right.svg";
 
-	const steps = ['Você sabia que a PB só tem XX de deputados negros?', 'Sample 1', 'Sample 2'];
+	const steps = [
+		"Você sabia que a PB só tem XX de deputados negros?",
+		"Sample 1",
+		"Sample 2",
+	];
 	$: currentStep = steps[0];
 
 	const nextStep = () => {
@@ -20,9 +24,9 @@
 
 <section>
 	<div class="content-container">
-		<img class="clickable" src={ChevronLeft} on:click={prevStep} />
+		<img class="clickable" src={ChevronLeftIcon} on:click={prevStep} />
 		<div class="text">{currentStep}</div>
-		<img class="clickable" src={ChevronRight} on:click={nextStep} />
+		<img class="clickable" src={ChevronRightIcon} on:click={nextStep} />
 	</div>
 
 	<div class="steps-container">

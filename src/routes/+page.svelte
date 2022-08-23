@@ -5,15 +5,8 @@
 
 	$: dados = {} as Dados;
 	$: candidatos = [] as Candidato[];
-
-	fetch("/dados.json")
-		.then((dados) => dados.json())
-		.then((dadosApi: Dados) => {
-			dados = dadosApi;
-			candidatos = dados["Deputado Federal"].candidatos;
-			console.log({ dados, candidatos });
-		})
-		.catch(console.log);
+	$: filters = { text: "", type: "" } as any;
+	$: filterOptions = [] as FilterOption[];
 
 	function withSearch(text: string) {
 		if (!text) return () => true;
@@ -28,9 +21,46 @@
 		};
 	}
 
+	$: {
+		const { type, text } = filters;
+		if (dados[type]) {
+			candidatos = dados[type].candidatos.filter(withSearch(text));
+		}
+
+		const filtersMap = candidatos.reduce(
+			(ac: any, it: Candidato) => {
+				ac.sexo.add(it.descricaoSexo);
+				ac.etnia.add(it.descricaoCorRaca);
+				ac.partido.add(it.partido.sigla);
+				return ac;
+			},
+			{
+				sexo: new Set(),
+				etnia: new Set(),
+				partido: new Set(),
+			}
+		);
+
+		filterOptions = [
+			{
+				label: "Etnia",
+				values: [...filtersMap.etnia],
+			},
+			{
+				label: "Partido",
+				values: [...filtersMap.partido],
+			},
+		];
+	}
+
+	fetch("/dados.json")
+		.then((dados) => dados.json())
+		.then((dadosApi: Dados) => (dados = dadosApi))
+		.catch(console.log);
+
 	function filter(event: any) {
 		const { type, text } = event.detail;
-		candidatos = dados[type].candidatos.filter(withSearch(text));
+		filters = { type, text };
 	}
 </script>
 
@@ -41,7 +71,7 @@
 <section>
 	<MainSlider />
 
-	<SearchBar on:filter={filter} />
+	<SearchBar on:filter={filter} bind:filterOptions />
 
 	<CardsContainer bind:candidatos />
 </section>

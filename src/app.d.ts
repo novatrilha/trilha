@@ -14,6 +14,12 @@ declare interface Candidato {
   numero: number
   fotoUrl: string
   st_REELEICAO: boolean
+  descricaoCorRaca: string
+  descricaoSexo: string
+
+  partido: {
+    sigla: string
+  }
 }
 
 declare type Dados = Record<string, {
@@ -24,3 +30,9 @@ declare type LabelValue = {
   label: string
   value: string
 }
+
+
+declare type FilterOption = {
+  label: string;
+  values: string[];
+};
