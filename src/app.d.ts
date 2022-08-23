@@ -9,6 +9,7 @@ declare namespace App {
 }
 
 declare interface Candidato {
+  id: number
   nomeColigacao: string
   nomeUrna: string
   numero: number
@@ -34,5 +35,8 @@ declare type LabelValue = {
 
 declare type FilterOption = {
   label: string;
-  values: string[];
+  values: {
+    label: string
+    checked: boolean
+  }[];
 };

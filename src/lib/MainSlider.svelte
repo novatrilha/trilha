@@ -58,8 +58,14 @@
 		gap: 3em;
 	}
 
+	.content-container > img {
+		width: 1.5em;
+		height: 1.5em;
+	}
+
 	.content-container {
 		display: flex;
+		align-items: center;
 		justify-content: space-between;
 		gap: 1em;
 		width: 100%;
@@ -68,7 +74,7 @@
 	.text {
 		display: flex;
 		align-items: center;
-		max-width: min(90vw, 1000px);
+		max-width: 90vw;
 		font-size: min(6vw, 6em);
 		font-weight: 700;
 		text-align: center;

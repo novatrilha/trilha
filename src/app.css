@@ -15,10 +15,12 @@ html {
   --black: #1E1E1E;
   --gray: #1e1e1e61;
   --light-gray: #1e1e1e1f;
+  --lighter-gray: #EBEBEB;
   --red: #FF200C;
   --yellow: #FF912B;
+  --purple: #4D00AF;
   --cols: 4;
-  --font-size: 16px;
+  --font-size: max(16px, 1vw);
 }
 
 body {
@@ -81,7 +83,7 @@ main {
 }
 
 button {
-  padding: .375em .75em;
+  padding: .5em .75em;
   background-color: var(--red);
   border: 1px solid var(--red);
   border-radius: 4px;
@@ -89,12 +91,23 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   font-size: 1em;
+  transition: .25s ease;
+}
+
+button:hover,
+button[data-tertiary]:hover {
+  background-color: var(--purple);
+  border-color: var(--purple);
 }
 
 button[data-secondary="true"] {
   background-color: var(--white);
   color: var(--gray);
   border-color: var(--gray);
+}
+
+button[data-secondary="true"] {
+  background-color: var(--white);
 }
 
 button[data-tertiary] {

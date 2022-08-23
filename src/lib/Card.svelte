@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { fade } from "svelte/transition";
+
 	export let candidato = {} as Candidato;
 </script>
 
-<div class="container">
+<div class="container" transition:fade={{ duration: 150 }}>
 	<div class="image-container">
 		<img src={candidato.fotoUrl} alt="Foto do candidato" />
 		{#if candidato.st_REELEICAO}
@@ -10,7 +12,7 @@
 		{/if}
 	</div>
 
-	<span class="nome">{candidato.nomeUrna}</span>
+	<span class="nome">{candidato.nomeUrna.toLowerCase()}</span>
 
 	<div class="bloco">
 		<span class="partido">{candidato.partido.sigla}</span>
@@ -26,7 +28,8 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1.375em;
-		width: 14em;
+		width: calc(100% - 4.5em);
+		max-width: 390px;
 		padding: 1.5em;
 		border: 1px solid var(--light-gray);
 		border-radius: 10px;
@@ -36,10 +39,8 @@
 		position: relative;
 		border: 1px solid var(--light-gray);
 		border-radius: 50%;
-		min-width: 9em;
-		min-height: 9em;
-		max-width: 9em;
-		max-height: 9em;
+		width: 90%;
+		aspect-ratio: 1 / 1;
 		object-fit: cover;
 	}
 
@@ -65,6 +66,7 @@
 		font-size: 1.5em;
 		line-height: 1em;
 		text-align: center;
+		text-transform: capitalize;
 	}
 
 	.bloco {
@@ -72,7 +74,7 @@
 		justify-content: space-between;
 		width: max(73%, 7em);
 		margin-top: auto;
-		font-size: 0.875em;
+		font-size: 1.25em;
 		font-weight: 500;
 	}
 </style>

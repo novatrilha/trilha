@@ -2,7 +2,7 @@
 	import { createEventDispatcher, onMount } from "svelte";
 	import DropdownFilter from "./DropdownFilter.svelte";
 
-	export let filterOptions: FilterOption[] = [];
+	export let filterOptions: FilterOption[];
 
 	const types: LabelValue[] = [
 		{
@@ -18,6 +18,7 @@
 	$: typeSel = types[0];
 	$: text = "";
 	$: inputText = "";
+	$: selOptions = {} as any;
 
 	let debounce: any = null;
 	$: {
@@ -29,8 +30,13 @@
 
 	const dispatch = createEventDispatcher();
 	$: {
-		dispatch("filter", { text, type: typeSel.value });
+		dispatch("filter", { text, type: typeSel.value, ...selOptions });
 	}
+
+	const onOptionsFilter = (event: any) => {
+		const { option, subOption } = event.detail;
+		selOptions = { option, subOption } as any;
+	};
 
 	onMount(() => dispatch("filter", { text, type: typeSel.value }));
 </script>
@@ -47,14 +53,13 @@
 
 	<input bind:value={inputText} class="search-input" placeholder="Buscar..." />
 
-	<DropdownFilter bind:filterOptions />
+	<DropdownFilter bind:filterOptions on:filter={onOptionsFilter} />
 </div>
 
 <style>
 	.search-container {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
 		gap: 2em;
 	}
 
@@ -66,6 +71,8 @@
 	.search-input {
 		flex-grow: 1;
 		max-width: 700px;
+		margin-left: auto;
+		font-size: 0.75em;
 		color: var(--gray);
 		border: 1px solid var(--gray);
 		background: var(--white);

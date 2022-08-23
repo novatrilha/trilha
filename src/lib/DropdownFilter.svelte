@@ -1,40 +1,68 @@
 <script lang="ts">
+  import { createEventDispatcher } from "svelte";
+  import { slide } from "svelte/transition";
   import FilterIcon from "../assets/filter-icon.svg";
   import ChevronDownYellowIcon from "../assets/chevron-down-yellow.svg";
+  import CheckedIcon from "../assets/checked.svg";
 
   export let filterOptions: FilterOption[] = [];
 
   $: open = false;
-  $: openSubOption = "";
+  $: openOption = "";
 
   $: {
     if (!open) {
-      openSubOption = "";
+      openOption = "";
     }
   }
+
+  const dispatch = createEventDispatcher();
+  const toggleSuboption = (subOption: any) => {
+    subOption.checked = !subOption.checked;
+    dispatch("filter", { option: openOption, subOption });
+  };
 </script>
 
+<svelte:window on:click={() => (open = false)} />
+
 <div class="container">
-  <button data-tertiary class="filters">
+  <button
+    data-tertiary
+    class="filters"
+    on:click|stopPropagation={() => (open = !open)}
+  >
     <img src={FilterIcon} alt="Ícone do botão de filtros" />
     filtros
   </button>
   {#if open}
-    <div class="options-container">
+    <div class="options-container" transition:slide={{ duration: 100 }}>
       {#each filterOptions as option}
         <div
           class="option clickable"
-          on:click={() =>
-            (openSubOption =
-              openSubOption === option.label ? "" : option.label)}
+          on:click|stopPropagation={() =>
+            (openOption = openOption === option.label ? "" : option.label)}
         >
-          {option.label}
+          {option.label.toLowerCase()}
           <img src={ChevronDownYellowIcon} alt="Ícone de expandir opções" />
         </div>
-        {#if openSubOption === option.label}
-          <div class="suboptions-container">
-            {#each option.values as subOption}
-              <div class="option">{subOption}</div>
+        {#if openOption === option.label}
+          <div
+            class="suboptions-container"
+            transition:slide={{ duration: 100 }}
+          >
+            {#each option.values as subOption (subOption.label)}
+              <label class="suboption clickable" on:click|stopPropagation>
+                {subOption.label.toLowerCase()}
+
+                <input
+                  type="checkbox"
+                  checked={subOption.checked}
+                  on:change={() => toggleSuboption(subOption)}
+                />
+                {#if subOption.checked}
+                  <img src={CheckedIcon} alt="Caixa de seleção marcada" />
+                {/if}
+              </label>
             {/each}
           </div>
         {/if}
@@ -50,9 +78,11 @@
 
   .options-container {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 5px);
+    right: 0;
     min-width: 12em;
-    background-color: var(--white);
+    background-color: var(--lighter-gray);
+    border-radius: 2px;
     z-index: 1;
     filter: drop-shadow(0px 24px 38px rgba(0, 0, 0, 0.14))
       drop-shadow(0px 9px 46px rgba(0, 0, 0, 0.12))
@@ -65,20 +95,46 @@
     gap: 5px;
   }
 
-  .option {
+  .option,
+  .suboption {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 22px 16px;
     border-bottom: 1px solid var(--yellow);
+    transition: 0.25s ease;
+    text-transform: capitalize;
   }
-  
+
+  .option:hover {
+    background-color: rgba(128, 128, 128, 0.2);
+  }
+
   .options-container > .option:last-child {
     border-bottom: unset;
   }
 
   .suboptions-container {
     width: 100%;
+    border-bottom: 1px solid var(--yellow);
+  }
+
+  .suboption {
+    padding: 12px 16px;
+    border: unset;
+  }
+
+  .suboption input {
+    width: 18px;
+    height: 18px;
+    margin-left: auto;
+    appearance: initial;
+    border: 1px solid var(--yellow);
+    border-radius: 4px;
+  }
+
+  .suboption img {
+    margin-left: -24px;
   }
 </style>
