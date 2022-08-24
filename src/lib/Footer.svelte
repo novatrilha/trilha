@@ -1,35 +1,40 @@
 <script lang="ts">
-	import LogoFooterIcon from '$lib/assets/logo-footer.svg';
-	import LogoGithubIcon from '$lib/assets/logo-github.svg';
+	import LogoFooterIcon from "$lib/assets/logo-footer.svg";
+	import LogoGithubIcon from "$lib/assets/logo-github.svg";
 </script>
 
 <footer>
-	<img src={LogoFooterIcon} alt="Logo da página, Trilha" class="logo"/>
+	<img src={LogoFooterIcon} alt="Logo da página, Trilha" class="logo" />
 
 	<section>
 		<h2>Sobre</h2>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis, egestas dictum enim,
-			cursus tristique. Eget mi egestas dolor tincidunt lacus lacus leo amet imperdiet. Quis in
-			pharetra ullamcorper quisque consectetur ut velit natoque. Vitae nibh sagittis senectus
-			aliquet bibendum pulvinar ac, tortor, non. Sed blandit massa arcu scelerisque donec augue ut.
-			Diam, pharetra, nibh aenean laoreet ornare.
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis,
+			egestas dictum enim, cursus tristique. Eget mi egestas dolor tincidunt
+			lacus lacus leo amet imperdiet. Quis in pharetra ullamcorper quisque
+			consectetur ut velit natoque. Vitae nibh sagittis senectus aliquet
+			bibendum pulvinar ac, tortor, non. Sed blandit massa arcu scelerisque
+			donec augue ut. Diam, pharetra, nibh aenean laoreet ornare.
 		</p>
 	</section>
 
-	<img
-		class="clickable"
-		src={LogoGithubIcon}
-		alt="Logo Github. Clique para ser redirecionado ao repositório do projeto"
-	/>
+	<a href="https://github.com/novatrilha/trilha" target="_blank" class="github-redirect">
+		<img
+			class="clickable"
+			src={LogoGithubIcon}
+			alt="Logo Github. Clique para ser redirecionado ao repositório do projeto"
+		/>
+	</a>
 </footer>
 
 <style>
 	footer {
 		display: flex;
+		align-items: center;
+		gap: 3vw;
 		justify-content: space-between;
 		color: var(--white);
-		padding: min(166px, 10em) min(100px, 7em);
+		padding: min(166px, 7vw) min(100px, 5vw);
 		background-color: var(--black);
 	}
 
@@ -44,7 +49,12 @@
 		line-height: 2.125em;
 	}
 
-  .logo {
-    width: min(200px, 20em)
-  }
+	.logo {
+		width: min(200px, 15vw);
+	}
+
+	.github-redirect > img {
+		width: clamp(30px, 7vw, 90px);
+		height: clamp(30px, 7vw, 90px);
+	}
 </style>
