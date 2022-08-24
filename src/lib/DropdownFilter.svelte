@@ -97,7 +97,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 22px 16px;
+    padding: 1.5em 1em;
     border-bottom: 1px solid var(--yellow);
     transition: 0.25s ease;
     text-transform: capitalize;
@@ -117,7 +117,7 @@
   }
 
   .suboption {
-    padding: 12px 16px;
+    padding: .75em 1em;
     border: unset;
   }
 

@@ -32,7 +32,7 @@
 		align-items: center;
 		gap: 1.375em;
 		width: calc(100% - 4.5em);
-		max-width: 390px;
+		max-width: min(18em, 390px);
 		padding: 1.5em;
 		border: 1px solid var(--light-gray);
 		border-radius: 10px;

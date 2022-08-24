@@ -19,7 +19,7 @@ html {
   --red: #FF200C;
   --yellow: #FF912B;
   --purple: #4D00AF;
-  --cols: 4;
+  --cols: 5;
   --font-size: max(16px, 1vw);
 }
 
@@ -38,6 +38,7 @@ body {
 @media only screen and (max-width: 1279px) {
   :root {
     --font-size: 14px;
+    --cols: 4;
   }
 }
 
@@ -95,6 +96,7 @@ button {
   cursor: pointer;
   font-size: 1em;
   transition: .25s ease;
+  white-space: nowrap;
 }
 
 button:hover,
