@@ -7,10 +7,7 @@
 		{ label: "Início", url: "" },
 		{ label: "Sobre", url: "sobre" },
 		{ label: "FAQ", url: "faq" },
-		{ label: "Contato", url: "contato" },
 	];
-
-	$: console.log($page);
 </script>
 
 <header>

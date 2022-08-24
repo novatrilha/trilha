@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from "$app/navigation";
 	import { fade } from "svelte/transition";
 
 	export let candidato = {} as Candidato;
@@ -19,7 +20,9 @@
 		<span class="numero">{candidato.numero}</span>
 	</div>
 
-	<button>ir para o perfil</button>
+	<button on:click={() => goto(`/candidato/${candidato.id}`)}
+		>ir para o perfil</button
+	>
 </div>
 
 <style>

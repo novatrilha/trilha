@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Card from "./Card.svelte";
+	import { candidatos } from "$lib/stores/dados";
 
-	export let candidatos: Candidato[] = [];
+	$: cds = $candidatos
 </script>
 
 <section>
-	{#each candidatos as candidato (candidato.id)}
-		<Card bind:candidato />
+	{#each cds as candidato (candidato.id)}
+		<Card bind:candidato={candidato} />
 	{/each}
 </section>
 

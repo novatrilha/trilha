@@ -32,11 +32,12 @@ declare type LabelValue = {
   value: string
 }
 
+declare type FilterSubOpt = {
+  label: string
+  checked: boolean
+}
 
 declare type FilterOption = {
   label: string;
-  values: {
-    label: string
-    checked: boolean
-  }[];
+  values: FilterSubOpt[];
 };

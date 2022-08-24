@@ -1,62 +1,64 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from "svelte";
-	import DropdownFilter from "./DropdownFilter.svelte";
-
-	export let filterOptions: FilterOption[];
-
-	const types: LabelValue[] = [
-		{
-			label: "dep. estadual",
-			value: "Deputado Estadual",
-		},
-		{
-			label: "dep. federal",
-			value: "Deputado Federal",
-		},
-	];
-
-	$: typeSel = types[0];
-	$: text = "";
-	$: inputText = "";
-	$: selOptions = {} as any;
+	import DropdownFilter from "$lib/DropdownFilter.svelte";
+	import {
+		dropdownActiveFilters,
+		dropdownFilterOptions,
+	} from "$lib/stores/dropdownFilter";
+	import { filters, filterOptions } from "$lib/stores/filters";
+	import { fade } from "svelte/transition";
+	import CloseIcon from "../assets/close.svg";
 
 	let debounce: any = null;
+	$: inputText = "";
 	$: {
 		clearTimeout(debounce);
 		debounce = setTimeout(() => {
-			text = inputText;
+			filters.update((state) => ({ ...state, text: inputText }));
 		}, 500);
 	}
 
-	const dispatch = createEventDispatcher();
-	$: {
-		dispatch("filter", { text, type: typeSel.value, ...selOptions });
-	}
-
-	const onOptionsFilter = (event: any) => {
-		const { option, subOption } = event.detail;
-		selOptions = { option, subOption } as any;
+	const removeFilter = (filter: FilterSubOpt) => {
+		filter.checked = false;
+		dropdownFilterOptions.update((state) => [...state]);
 	};
 
-	onMount(() => dispatch("filter", { text, type: typeSel.value }));
+	const setType = (type: LabelValue) => {
+		filters.update((state) => ({ ...state, type: type.value }));
+	};
 </script>
 
 <div class="search-container">
 	<div class="buttons-container">
-		{#each types as type}
+		{#each filterOptions as type}
 			<button
-				data-secondary={type !== typeSel}
-				on:click={() => (typeSel = type)}>{type.label}</button
+				data-secondary={type.value !== $filters.type}
+				on:click={() => setType(type)}>{type.label}</button
 			>
 		{/each}
 	</div>
 
 	<input bind:value={inputText} class="search-input" placeholder="Buscar..." />
 
-	<DropdownFilter bind:filterOptions on:filter={onOptionsFilter} />
+	<DropdownFilter />
+
+	<div class="active-filters">
+		<span class="title" class:empty={$dropdownActiveFilters.length === 0}
+			>Filtros aplicados:</span
+		>
+		{#each $dropdownActiveFilters as filter (filter.label)}
+			<span class="filter" transition:fade={{ duration: 150 }}>
+				{filter.label.toLowerCase()}
+				<img
+					src={CloseIcon}
+					alt="Remover filtro"
+					on:click={() => removeFilter(filter)}
+				/>
+			</span>
+		{/each}
+	</div>
 </div>
 
-<style>
+<style lang="scss">
 	.search-container {
 		display: flex;
 		flex-wrap: wrap;
@@ -82,5 +84,35 @@
 		background-repeat: no-repeat;
 		background-size: 1.125em 1.125em;
 		background-position: 0.75em 50%;
+	}
+
+	.active-filters {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5em;
+		width: 100%;
+
+		.title {
+			font-size: 1.25em;
+			font-weight: 500;
+		}
+
+		.empty {
+			color: transparent;
+		}
+
+		.filter {
+			display: flex;
+			align-items: center;
+			gap: 0.25em;
+			padding: 0.25em 0.675em;
+			font-size: 0.875em;
+			text-transform: capitalize;
+
+			img {
+				cursor: pointer;
+			}
+		}
 	}
 </style>

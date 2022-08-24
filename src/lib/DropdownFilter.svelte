@@ -1,25 +1,21 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte";
   import { slide } from "svelte/transition";
   import FilterIcon from "../assets/filter-icon.svg";
   import ChevronDownYellowIcon from "../assets/chevron-down-yellow.svg";
   import CheckedIcon from "../assets/checked.svg";
-
-  export let filterOptions: FilterOption[] = [];
+  import { dropdownFilterOptions } from "$lib/stores/dropdownFilter";
 
   $: open = false;
   $: openOption = "";
-
   $: {
     if (!open) {
       openOption = "";
     }
   }
 
-  const dispatch = createEventDispatcher();
   const toggleSuboption = (subOption: any) => {
     subOption.checked = !subOption.checked;
-    dispatch("filter", { option: openOption, subOption });
+    dropdownFilterOptions.update((value) => [...value]);
   };
 </script>
 
@@ -36,7 +32,7 @@
   </button>
   {#if open}
     <div class="options-container" transition:slide={{ duration: 100 }}>
-      {#each filterOptions as option}
+      {#each $dropdownFilterOptions as option}
         <div
           class="option clickable"
           on:click|stopPropagation={() =>
