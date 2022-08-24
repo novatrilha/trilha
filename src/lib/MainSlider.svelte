@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ChevronLeftIcon from "../assets/chevron-left.svg";
-	import ChevronRightIcon from "../assets/chevron-right.svg";
+	import ChevronLeftIcon from "$lib/assets/chevron-left.svg";
+	import ChevronRightIcon from "$lib/assets/chevron-right.svg";
 
 	const steps = [
 		"Você sabia que a PB só tem XX de deputados negros?",

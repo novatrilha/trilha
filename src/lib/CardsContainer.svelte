@@ -2,12 +2,12 @@
 	import Card from "./Card.svelte";
 	import { candidatos } from "$lib/stores/dados";
 
-	$: cds = $candidatos
+	$: cds = $candidatos;
 </script>
 
 <section>
 	{#each cds as candidato (candidato.id)}
-		<Card bind:candidato={candidato} />
+		<Card bind:candidato />
 	{/each}
 </section>
 

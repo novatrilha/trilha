@@ -1,8 +1,8 @@
 <script lang="ts">
   import { slide } from "svelte/transition";
-  import FilterIcon from "../assets/filter-icon.svg";
-  import ChevronDownYellowIcon from "../assets/chevron-down-yellow.svg";
-  import CheckedIcon from "../assets/checked.svg";
+  import FilterIcon from "$lib/assets/filter-icon.svg";
+  import ChevronDownYellowIcon from "$lib/assets/chevron-down-yellow.svg";
+  import CheckedIcon from "$lib/assets/checked.svg";
   import { dropdownFilterOptions } from "$lib/stores/dropdownFilter";
 
   $: open = false;

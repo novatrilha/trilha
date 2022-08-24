@@ -6,7 +6,7 @@
 	} from "$lib/stores/dropdownFilter";
 	import { filters, filterOptions } from "$lib/stores/filters";
 	import { fade } from "svelte/transition";
-	import CloseIcon from "../assets/close.svg";
+	import CloseIcon from "$lib/assets/close.svg";
 
 	let debounce: any = null;
 	$: inputText = "";
@@ -80,7 +80,7 @@
 		background: var(--white);
 		border-radius: 6px;
 		padding: 0.875em 1.25em 0.875em 2.25em;
-		background-image: url("../assets/search.svg");
+		background-image: url("$lib/assets/search.svg");
 		background-repeat: no-repeat;
 		background-size: 1.125em 1.125em;
 		background-position: 0.75em 50%;

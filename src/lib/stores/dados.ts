@@ -54,8 +54,11 @@ export const candidatos = derived([filters, dropdownFilterOptions, dados], ([$fi
 
 
 export const candidato = derived([page, dados], ([$page, $dados]) => {
-  return Object.values($dados)
+  const candidato = Object.values($dados)
     .map((cargo: any) => cargo.candidatos)
     .reduce((ac: Candidato[], it: Candidato) => ac.concat(it), [])
     .find((candidato: Candidato) => candidato.id === +$page.params.id);
+  // if (!candidato) throw Error('Candidato não encontrado');
+
+  return candidato as Candidato;
 });

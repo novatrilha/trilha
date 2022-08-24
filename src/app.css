@@ -30,7 +30,6 @@ body {
   font-family: 'Inter';
   font-style: normal;
   font-size: var(--font-size);
-  line-height: 130%;
   color: var(--black);
 
   background-color: var(--white);
@@ -80,6 +79,10 @@ main {
 
 .clickable {
   cursor: pointer;
+  transition: 150ms;
+}
+.clickable:hover {
+  opacity: .85;
 }
 
 button {

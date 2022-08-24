@@ -17,10 +17,14 @@ declare interface Candidato {
   st_REELEICAO: boolean
   descricaoCorRaca: string
   descricaoSexo: string
+  grauInstrucao: string
+  ocupacao: string
 
   partido: {
     sigla: string
   }
+
+  sites: string[]
 }
 
 declare type Dados = Record<string, {

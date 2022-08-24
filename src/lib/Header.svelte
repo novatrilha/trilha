@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
-	import LogoIcon from "../assets/logo.svg";
+	import LogoIcon from "$lib/assets/logo.svg";
 
 	const routes = [
 		{ label: "Início", url: "" },
@@ -18,16 +18,20 @@
 		alt="Logo da página, Trilha"
 	/>
 
-	<ul>
+	<nav>
 		{#each routes as route}
-			<li class="clickable" class:active={$page.routeId === route.url}>
+			<a
+				class="clickable"
+				href={route.url}
+				class:active={$page.routeId === route.url}
+			>
 				{route.label}
-			</li>
+			</a>
 		{/each}
-	</ul>
+	</nav>
 </header>
 
-<style>
+<style lang="scss">
 	header {
 		display: flex;
 		justify-content: space-between;
@@ -37,19 +41,20 @@
 		width: min(150px, 11em);
 	}
 
-	ul {
+	nav {
 		display: flex;
 		gap: 28px;
 		font-weight: 600;
 		font-size: 1em;
-	}
 
-	ul > li {
-		display: block;
-		color: var(--gray);
-	}
+		> a {
+			display: block;
+			color: var(--gray);
+			text-decoration: none;
 
-	li.active {
-		color: var(--red);
+			&.active {
+				color: var(--red);
+			}
+		}
 	}
 </style>
