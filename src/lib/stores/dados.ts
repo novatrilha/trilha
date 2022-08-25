@@ -7,6 +7,12 @@ export const dados = readable([] as any, (set) => {
   fetch("/dados.json")
     .then((dados) => dados.json())
     .then((dados: Dados) => {
+      Object.values(dados).forEach((cargo) => {
+        cargo.candidatos.forEach((cd) => {
+          const format = cd.fotoUrl.split('.').reverse()[0];
+          cd.fotoUrl = `/photos/${cd.id}.${format}`;
+        })
+      })
       set(dados);
     })
     .catch(console.log);

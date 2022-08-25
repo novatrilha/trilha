@@ -1,18 +1,42 @@
 <script lang="ts">
+  import domtoimage from "dom-to-image";
+
   import { candidato, relacionados } from "$lib/stores/dados";
   import TitleValue from "$lib/TitleValue.svelte";
   import ShareIcon from "$lib/assets/share.svg";
   import RedirectIcon from "$lib/assets/redirect.svg";
-  import { page } from "$app/stores";
   import CargoEleicao from "$lib/CargoEleicao.svelte";
   import CardCandidato from "$lib/CardCandidato.svelte";
 
-  const copyPageUrl = () => {
-    const element = document.createElement("input") as HTMLInputElement;
-    element.value = $page.url.href;
-    element.select();
-    element.setSelectionRange(0, 99999);
-    navigator.clipboard.writeText(element.value);
+  const onShare = () => {
+    // const element = document.createElement("input") as HTMLInputElement;
+    // element.value = $page.url.href;
+    // element.select();
+    // element.setSelectionRange(0, 99999);
+    // navigator.clipboard.writeText(element.value);
+
+    const node = document.querySelector(".candidato-card");
+    domtoimage
+      .toPng(node)
+      .then(function (dataUrl: string) {
+        // const img = new Image();
+        // img.src = dataUrl;
+        // node!.appendChild(img);
+
+        fetch(dataUrl)
+          .then((res) => res.blob())
+          .then((blob) =>
+            navigator.clipboard.write([
+              new ClipboardItem({
+                "image/png": blob,
+              }),
+            ])
+          )
+          .catch(console.error);
+      })
+      .catch(function (error: unknown) {
+        console.error("oops, something went wrong!", error);
+      });
   };
 
   const gotoTSE = () => {
@@ -34,6 +58,7 @@
 {#if $candidato}
   <section class="infos-container">
     <div class="candidato-card">
+      <!-- <img src={cd.fotoUrl} alt="Foto do candidato" class="photo" /> -->
       <img src={cd.fotoUrl} alt="Foto do candidato" class="photo" />
       <div class="main-infos">
         <h2 class="name">{cd.nomeUrna.toLowerCase()}</h2>
@@ -56,7 +81,7 @@
         </div>
 
         <div class="other-links">
-          <div class="share-link clickable" on:click={copyPageUrl}>
+          <div class="share-link clickable" on:click={onShare}>
             <img src={ShareIcon} alt="Ícone compartilhar perfil" />
             Compartilhar perfil
           </div>
@@ -94,7 +119,7 @@
   .infos-container {
     display: flex;
     flex-wrap: wrap;
-    gap: .5em;
+    gap: 0.5em;
     justify-content: space-between;
     padding: 1.25em 1.125em;
     margin-bottom: 5em;

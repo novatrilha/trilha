@@ -8,6 +8,8 @@ declare namespace App {
   // interface PublicEnv {}
 }
 
+declare module 'dom-to-image';
+
 declare type HistoricoEleicao = {
   nrAno: number
   partido: string
