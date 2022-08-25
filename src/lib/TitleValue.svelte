@@ -22,14 +22,14 @@
   }
   
   small {
-    font-size: 0.675em;
+    font-size: var(--font-3);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1.5px;
   }
 
   .value {
-    font-size: 1.5em;
+    font-size: var(--font2);
     max-width: 16ch;
     text-overflow: ellipsis;
     white-space: nowrap;

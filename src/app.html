@@ -9,4 +9,11 @@
 	<body>
 		%sveltekit.body%
 	</body>
+
+	<script>
+		const isMobileDevice = /Mobi/i.test(window.navigator.userAgent);
+		if (isMobileDevice) {
+			document.body.setAttribute('mobile', 'true')
+		}
+	</script>
 </html>

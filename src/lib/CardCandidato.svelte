@@ -61,12 +61,12 @@
 		border-radius: 1em;
 		background-color: var(--yellow);
 		color: var(--black);
-		font-size: 0.75rem;
+		font-size: var(--font-2)rem;
 		text-align: center;
 	}
 
 	.nome {
-		font-size: 1.5em;
+		font-size: var(--font2);
 		line-height: 1em;
 		text-align: center;
 		text-transform: capitalize;
@@ -77,7 +77,7 @@
 		justify-content: space-between;
 		width: max(73%, 7em);
 		margin-top: auto;
-		font-size: 1.25em;
+		font-size: var(--font1);
 		font-weight: 500;
 	}
 </style>

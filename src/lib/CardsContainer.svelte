@@ -15,7 +15,7 @@
 	section {
 		display: grid;
 		grid-template-columns: repeat(var(--cols), 1fr);
-		gap: 1.5em;
+		gap: min(1.5em, 2vw);
 		justify-items: center;
 	}
 </style>

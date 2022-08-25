@@ -125,7 +125,66 @@
     margin-bottom: 5em;
 
     .candidato-card {
+      width: var(--mobile-width);
       gap: 2.75em;
+      flex-wrap: wrap;
+
+      .photo {
+        width: var(--big-photo, 11em);
+        height: var(--big-photo, 11em);
+        border-radius: 50%;
+        border: 1px solid var(--gray);
+        object-fit: cover;
+        margin: 0 auto;
+      }
+
+      .main-infos {
+        display: flex;
+        flex-direction: column;
+
+        .name {
+          font-size: 3em;
+          text-transform: capitalize;
+          margin-bottom: 0;
+        }
+
+        .sub-infos {
+          display: flex;
+          gap: 2em;
+          font-size: 2.125em;
+          margin-bottom: 1.25em;
+        }
+
+        .personal-infos-1 {
+          margin-bottom: 2em;
+        }
+
+        .personal-infos-1,
+        .personal-infos-2 {
+          display: flex;
+          gap: 2.675em;
+          flex-wrap: wrap;
+        }
+
+        .other-links {
+          display: flex;
+          gap: 3.5em;
+          margin-top: 4em;
+
+          .share-link,
+          .goto-tse {
+            display: flex;
+            align-items: center;
+            gap: 0.375em;
+            font-size: var(--font0);
+
+            img {
+              width: 1.5em;
+              height: 1.5em;
+            }
+          }
+        }
+      }
     }
 
     .candidato-card,
@@ -143,67 +202,13 @@
       margin-bottom: 0.75em;
     }
 
-    .photo {
-      width: 11em;
-      height: 11em;
-      border-radius: 50%;
-      border: 1px solid var(--gray);
-      object-fit: cover;
-    }
-
-    .main-infos {
-      display: flex;
-      flex-direction: column;
-
-      .name {
-        font-size: 3em;
-        text-transform: capitalize;
-        margin-bottom: 0;
-      }
-
-      .sub-infos {
-        display: flex;
-        gap: 2em;
-        font-size: 2.125em;
-        margin-bottom: 1.25em;
-      }
-
-      .personal-infos-1 {
-        margin-bottom: 2em;
-      }
-
-      .personal-infos-1,
-      .personal-infos-2 {
-        display: flex;
-        gap: 2.675em;
-      }
-
-      .other-links {
-        display: flex;
-        gap: 3.5em;
-        margin-top: 4em;
-
-        .share-link,
-        .goto-tse {
-          display: flex;
-          align-items: center;
-          gap: 0.375em;
-
-          img {
-            width: 1.5em;
-            height: 1.5em;
-          }
-        }
-      }
-    }
-
     .history {
-      display: flex;
       flex-direction: column;
-      gap: 0.675em;
+      width: var(--mobile-width);
+      gap: max(0.675em, 10px);
 
       h2 {
-        font-size: 2em;
+        font-size: var(--font2);
         font-weight: 500;
       }
     }

@@ -50,6 +50,6 @@
 	section {
 		display: flex;
 		flex-direction: column;
-		gap: 82px;
+		gap: 5em;
 	}
 </style>

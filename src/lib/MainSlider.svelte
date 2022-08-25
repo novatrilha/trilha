@@ -59,8 +59,8 @@
 	}
 
 	.content-container > img {
-		width: 1.5em;
-		height: 1.5em;
+		width: var(--font3);
+		height: var(--font3);
 	}
 
 	.content-container {

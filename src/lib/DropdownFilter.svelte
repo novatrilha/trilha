@@ -67,9 +67,14 @@
   {/if}
 </div>
 
-<style>
+<style lang="scss">
   .container {
     position: relative;
+    font-size: var(--mobile-font);
+
+    button {
+      height: 100%;
+    }
   }
 
   .options-container {

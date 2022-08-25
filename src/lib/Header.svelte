@@ -43,7 +43,7 @@
 		display: flex;
 		gap: 28px;
 		font-weight: 600;
-		font-size: 1em;
+		font-size: max(1em, 16px);
 
 		> a {
 			display: block;

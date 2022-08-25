@@ -67,14 +67,17 @@
 
 	.buttons-container {
 		display: flex;
+		justify-content: center;
 		gap: 1.25em;
+		width: var(--mobile-width);
+		font-size: var(--font0);
 	}
 
 	.search-input {
 		flex-grow: 1;
-		max-width: 700px;
 		margin-left: auto;
-		font-size: 0.75em;
+		font-size: var(--font-2);
+		font-size: var(--font0);
 		color: var(--gray);
 		border: 1px solid var(--gray);
 		background: var(--white);
@@ -94,7 +97,7 @@
 		width: 100%;
 
 		.title {
-			font-size: 1.25em;
+			font-size: var(--font1);
 			font-weight: 500;
 		}
 
@@ -107,7 +110,7 @@
 			align-items: center;
 			gap: 0.25em;
 			padding: 0.25em 0.675em;
-			font-size: 0.875em;
+			font-size: var(--font-1);
 			text-transform: capitalize;
 
 			img {

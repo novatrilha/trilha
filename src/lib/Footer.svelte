@@ -45,7 +45,7 @@
 	section h2 {
 		margin: 0;
 		font-weight: 400;
-		font-size: 2em;
+		font-size: var(--font2);
 		line-height: 2.125em;
 	}
 

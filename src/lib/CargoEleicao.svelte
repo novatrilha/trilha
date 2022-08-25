@@ -20,12 +20,13 @@
     display: flex;
     align-items: center;
     gap: 1.5em;
-    padding-bottom: .75em;
+    padding-bottom: max(.75em, 15px);
     border-bottom: 1px solid var(--light-gray);
 
     h3 {
       margin: 0 0 .5em;
       font-weight: 600;
+      font-size: var(--font1);
     }
   }
 
@@ -35,17 +36,22 @@
     justify-content: center;
     width: 3.75em;
     height: 3.75em;
+    font-size: var(--font0);
     border-radius: 50%;
     background-color: var(--red);
     color: var(--white);
   }
 
   .chip {
-    font-size: .75rem;
+    font-size: var(--font-2);
     border-radius: 10px;
     padding: .125em .75em .25em;
     color: var(--dark-gray);
     border: 1px solid var(--dark-gray);
+  }
+
+  .chip:not(:last-child) {
+    margin-right: max(.125em, 5px);
   }
 
   .eleito {
