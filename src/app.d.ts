@@ -8,6 +8,14 @@ declare namespace App {
   // interface PublicEnv {}
 }
 
+declare type HistoricoEleicao = {
+  nrAno: number
+  partido: string
+  sgUe: string
+  cargo: string
+  situacaoTotalizacao: string
+}
+
 declare interface Candidato {
   id: number
   nomeColigacao: string
@@ -25,6 +33,8 @@ declare interface Candidato {
   }
 
   sites: string[]
+
+  eleicoesAnteriores: HistoricoEleicao[]
 }
 
 declare type Dados = Record<string, {

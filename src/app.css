@@ -1,22 +1,21 @@
-@import url('https://rsms.me/inter/inter.css');
-
-html {
-  font-family: 'Inter', sans-serif;
+@font-face {
+  font-family: Cabin;
+  src: url('/fonts/Cabin-Regular.ttf');
 }
 
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: 'Inter var', sans-serif;
-  }
+html {
+  font-family: 'Cabin', sans-serif;
 }
 
 :root {
   --white: #F6F6F6;
   --black: #1E1E1E;
+  --dark-gray: #1e1e1e99;
   --gray: #1e1e1e61;
   --light-gray: #1e1e1e1f;
   --lighter-gray: #EBEBEB;
   --red: #FF200C;
+  --orange: #FF5436;
   --yellow: #FF912B;
   --purple: #4D00AF;
   --cols: 5;
@@ -27,7 +26,7 @@ body {
   height: 100vh;
   margin: 0;
 
-  font-family: 'Inter';
+  font-family: 'Cabin';
   font-style: normal;
   font-size: var(--font-size);
   color: var(--black);
@@ -82,6 +81,7 @@ main {
   cursor: pointer;
   transition: 150ms;
 }
+
 .clickable:hover {
   opacity: .85;
 }
@@ -118,4 +118,8 @@ button[data-secondary="true"] {
 button[data-tertiary] {
   background-color: var(--yellow);
   border-color: var(--yellow);
+}
+
+.capt {
+  text-transform: capitalize;
 }

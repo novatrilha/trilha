@@ -52,13 +52,18 @@ export const candidatos = derived([filters, dropdownFilterOptions, dados], ([$fi
   return filtered;
 });
 
+const getCds = (dados: Dados) => Object.values(dados)
+  .map((cargo: any) => cargo.candidatos)
+  .reduce((ac: Candidato[], it: Candidato) => ac.concat(it), []);
 
 export const candidato = derived([page, dados], ([$page, $dados]) => {
-  const candidato = Object.values($dados)
-    .map((cargo: any) => cargo.candidatos)
-    .reduce((ac: Candidato[], it: Candidato) => ac.concat(it), [])
-    .find((candidato: Candidato) => candidato.id === +$page.params.id);
+  const candidato = getCds($dados).find((candidato: Candidato) => candidato.id === +$page.params.id);
   // if (!candidato) throw Error('Candidato não encontrado');
 
   return candidato as Candidato;
+});
+
+export const relacionados = derived([candidato, dados], ([$candidato, $dados]) => {
+  if (!$candidato) return []
+  return getCds($dados).filter((cd: Candidato) => cd.partido.sigla === $candidato.partido.sigla && cd.id !== $candidato.id);
 });

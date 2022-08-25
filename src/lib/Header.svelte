@@ -1,29 +1,27 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import { page } from "$app/stores";
 	import LogoIcon from "$lib/assets/logo.svg";
 
 	const routes = [
-		{ label: "Início", url: "" },
-		{ label: "Sobre", url: "sobre" },
-		{ label: "FAQ", url: "faq" },
+		{ label: "Início", url: "/" },
+		{ label: "Sobre", url: "/sobre" },
+		{ label: "FAQ", url: "/faq" },
 	];
+
+	$: console.log($page)
 </script>
 
 <header>
-	<img
-		class="clickable"
-		on:click={() => goto("/")}
-		src={LogoIcon}
-		alt="Logo da página, Trilha"
-	/>
+	<a href="/">
+		<img class="clickable" src={LogoIcon} alt="Logo da página, Trilha" />
+	</a>
 
 	<nav>
 		{#each routes as route}
 			<a
 				class="clickable"
 				href={route.url}
-				class:active={$page.routeId === route.url}
+				class:active={`/${$page.routeId}` === route.url}
 			>
 				{route.label}
 			</a>
@@ -37,7 +35,7 @@
 		justify-content: space-between;
 	}
 
-	img {
+	a > img {
 		width: min(150px, 11em);
 	}
 

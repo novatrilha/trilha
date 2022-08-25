@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from "./Card.svelte";
+	import Card from "./CardCandidato.svelte";
 	import { candidatos } from "$lib/stores/dados";
 
 	$: cds = $candidatos;
