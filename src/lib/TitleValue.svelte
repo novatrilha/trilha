@@ -48,8 +48,8 @@
       color: var(--yellow);
 
       img {
-        width: 1em;
-        height: 1em;
+        width: max(1em, var(--font1));
+        height: max(1em, var(--font1));
         margin-top: .125em;
       }
     }

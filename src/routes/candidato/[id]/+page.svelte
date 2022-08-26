@@ -122,7 +122,7 @@
   .infos-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: max(0.5em, var(--font2));
     justify-content: space-between;
     padding: 1.25em 1.125em;
     margin-bottom: 5em;
@@ -131,6 +131,7 @@
       width: var(--mobile-width);
       gap: 2.75em;
       flex-wrap: wrap;
+      min-width: 50vw;
 
       .photo {
         width: var(--big-photo, 11em);
@@ -144,6 +145,7 @@
       .main-infos {
         display: flex;
         flex-direction: column;
+        margin-right: var(--font4);
 
         .name {
           font-size: 3em;
@@ -194,7 +196,7 @@
     .history {
       display: flex;
       margin-bottom: auto;
-      padding: 1.25em 1.125em;
+      padding: max(1.25em, 16px);
       border-radius: 11px;
       background-color: var(--lighter-gray);
     }
@@ -222,6 +224,7 @@
 
     > h2 {
       font-size: 2.125em;
+      font-size: var(--font3);
       margin-bottom: 1.5em;
       font-weight: 600;
     }
@@ -229,7 +232,8 @@
     .related-cards {
       display: flex;
       gap: 0.5em;
-      overflow-y: scroll;
+      overflow-y: hidden;
+      overflow-x: auto;
     }
   }
 </style>

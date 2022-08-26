@@ -4,23 +4,30 @@ export const dropdownFilterOptions = writable([
   {
     label: "Etnia",
     values: [
-      { label: "PARDA", checked: false },
       { label: "BRANCA", checked: false },
       { label: "PRETA", checked: false },
+      { label: "PARDA", checked: false },
       { label: "INDÍGENA", checked: false },
     ],
   },
   {
     label: "Partido",
     values: [
-      { label: "PSOL", checked: false },
       { label: "PSB", checked: false },
-      { label: "PSTU", checked: false },
-      { label: "CIDADANIA", checked: false },
-      { label: "PT", checked: false },
       { label: "REDE", checked: false },
+      { label: "PSOL", checked: false },
       { label: "PMN", checked: false },
+      { label: "PT", checked: false },
+      { label: "PC do B", checked: false },
       { label: "PV", checked: false },
+      { label: "UP", checked: false },
+    ],
+  },
+  {
+    label: "Gênero",
+    values: [
+      { label: "MASC.", checked: false },
+      { label: "FEM.", checked: false },
     ],
   },
 ] as FilterOption[]);

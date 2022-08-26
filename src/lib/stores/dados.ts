@@ -3,7 +3,7 @@ import { derived, readable } from "svelte/store";
 import { dropdownFilterOptions } from "./dropdownFilter";
 import { filters } from "./filters";
 
-export const dados = readable([] as any, (set) => {
+export const dados = readable({} as Dados, (set) => {
   fetch("/dados.json")
     .then((dados) => dados.json())
     .then((dados: Dados) => {
@@ -42,8 +42,13 @@ function withFilters(filters: FilterOption[]) {
   const filterPartido = (cd: Candidato) =>
     filtersPartido.includes(cd.partido.sigla);
 
+  const filtersGenero = getActiveFilters(filters[2]);
+  const filterGenero = (cd: Candidato) =>
+    filtersGenero.includes(cd.descricaoSexo);
+
   return (cd: Candidato) =>
     (filtersEtnia.length === 0 || filterEtnia(cd)) &&
+    (filtersGenero.length === 0 || filterGenero(cd)) &&
     (filtersPartido.length === 0 || filterPartido(cd));
 }
 

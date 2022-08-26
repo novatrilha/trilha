@@ -56,12 +56,12 @@
 	.badge {
 		position: absolute;
 		bottom: 0.5rem;
-		width: 100%;
-		max-width: 15ch;
+		width: 10ch;
 		border-radius: 1em;
 		background-color: var(--yellow);
 		color: var(--black);
-		font-size: var(--font-2)rem;
+		font-size: var(--font-1);
+		line-height: var(--font2);
 		text-align: center;
 	}
 

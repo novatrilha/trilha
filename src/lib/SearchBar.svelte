@@ -93,11 +93,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-wrap: wrap;
 		gap: 0.5em;
 		width: 100%;
 
 		.title {
-			font-size: var(--font1);
+			font-size: var(--font2);
 			font-weight: 500;
 		}
 
@@ -110,8 +111,10 @@
 			align-items: center;
 			gap: 0.25em;
 			padding: 0.25em 0.675em;
-			font-size: var(--font-1);
+			font-size: var(--font1);
 			text-transform: capitalize;
+			background-color: var(--light-gray);
+			border-radius: var(--font0);
 
 			img {
 				cursor: pointer;

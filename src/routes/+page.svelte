@@ -2,6 +2,7 @@
 	import CardsContainer from "$lib/CardsContainer.svelte";
 	import MainSlider from "$lib/MainSlider.svelte";
 	import SearchBar from "$lib/SearchBar.svelte";
+	import { dados } from "$lib/stores/dados";
 
 	const buildFilterOptions = (candidatos: any) => {
 		const filtersMap = candidatos.reduce(
@@ -29,9 +30,22 @@
 				label: "Partido",
 				values: [...filtersMap.partido].map(toFormat),
 			},
+			{
+				label: "Gênero",
+				values: [...filtersMap.sexo].map(toFormat),
+			},
 		];
 	};
 
+	// $: {
+	// 	const filtros = buildFilterOptions(
+	// 		Object.values($dados)
+	// 			.map((cargo) => cargo.candidatos)
+	// 			.reduce((a, b) => a.concat(b), [])
+	// 	);
+	// 	console.log(filtros);
+	// 	console.log(JSON.stringify(filtros));
+	// }
 </script>
 
 <svelte:head>
