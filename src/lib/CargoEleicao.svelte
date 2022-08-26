@@ -44,6 +44,7 @@
 
   .chip {
     font-size: var(--font-2);
+    letter-spacing: .75px;
     border-radius: 10px;
     padding: .125em .75em .25em;
     color: var(--dark-gray);

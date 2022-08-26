@@ -30,7 +30,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1.375em;
+		gap: max(1.375em, 14px);
 		width: calc(100% - 4.5em);
 		max-width: min(18em, 390px);
 		padding: 1.5em;

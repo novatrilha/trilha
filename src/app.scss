@@ -1,10 +1,12 @@
 @font-face {
-  font-family: Cabin;
-  src: url('/fonts/Cabin-Regular.ttf');
+  font-family: 'Cabin';
+  src: url('/fonts/Cabin-Medium.ttf');
 }
 
-html {
+* {
   font-family: 'Cabin', sans-serif;
+  letter-spacing: 0.18px;
+  font-weight: 400;
 }
 
 :root {
@@ -26,7 +28,6 @@ body {
   height: 100vh;
   margin: 0;
 
-  font-family: 'Cabin';
   font-style: normal;
   font-size: var(--font-size);
   color: var(--black);
@@ -120,8 +121,14 @@ button {
   text-transform: uppercase;
   cursor: pointer;
   font-size: var(--font0);
+  font-weight: 500;
+  letter-spacing: 1.25px;
   transition: .25s ease;
   white-space: nowrap;
+}
+
+body[mobile] button {
+  font-size: 11px;
 }
 
 button[data-secondary="true"] {

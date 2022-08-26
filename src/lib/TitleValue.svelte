@@ -35,7 +35,6 @@
 
   .value {
     font-size: var(--font2);
-    max-width: 16ch;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
