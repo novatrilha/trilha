@@ -81,7 +81,7 @@
     position: absolute;
     top: calc(100% + 5px);
     right: 0;
-    min-width: 12em;
+    width: clamp(100px, 31ch, 200px);
     background-color: var(--lighter-gray);
     border-radius: 2px;
     z-index: 1;
@@ -103,6 +103,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 1.5em 1em;
+    font-size: var(--font0);
     border-bottom: 1px solid var(--yellow);
     transition: 0.25s ease;
     text-transform: capitalize;

@@ -96,6 +96,9 @@
 
     <div class="history">
       <h2>Histórico de candidaturas</h2>
+      {#if cd.eleicoesAnteriores.length === 0}
+        <span>Não possui histórico de candidaturas</span>
+      {/if}
       {#each cd.eleicoesAnteriores as item (item.nrAno)}
         <CargoEleicao bind:item />
       {/each}
