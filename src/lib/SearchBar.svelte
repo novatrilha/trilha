@@ -28,15 +28,6 @@
 </script>
 
 <div class="search-container">
-	<div class="buttons-container">
-		{#each filterOptions as type}
-			<button
-				data-secondary={type.value !== $filters.type}
-				on:click={() => setType(type)}>{type.label}</button
-			>
-		{/each}
-	</div>
-
 	<input bind:value={inputText} class="search-input" placeholder="Buscar..." />
 
 	<DropdownFilter />
@@ -56,21 +47,27 @@
 			</span>
 		{/each}
 	</div>
+
+	<div class="tabs">
+		{#each filterOptions as type}
+			<div
+				class="tab"
+				class:active={type.value === $filters.type}
+				on:click={() => setType(type)}
+			>
+				{type.label}
+			</div>
+		{/each}
+	</div>
 </div>
 
 <style lang="scss">
 	.search-container {
 		display: flex;
+		max-width: max(70vw, 800px);
 		flex-wrap: wrap;
 		gap: 2em;
-	}
-
-	.buttons-container {
-		display: flex;
-		justify-content: center;
-		gap: 1.25em;
-		width: var(--mobile-width);
-		font-size: var(--font0);
+		margin: 0 auto;
 	}
 
 	.search-input {
@@ -119,6 +116,33 @@
 			img {
 				cursor: pointer;
 			}
+		}
+	}
+
+	.tabs {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+
+		.tab {
+			flex-grow: 1;
+			padding: 1em;
+			color: var(--gray);
+			border-bottom: 2px solid var(--gray);
+			text-align: center;
+			cursor: pointer;
+			user-select: none;
+			text-transform: uppercase;
+			transition: .25s ease;
+
+			&:hover {
+				background-color: var(--lighter-gray);
+			}
+		}
+
+		.tab.active {
+			color: var(--red);
+			border-color: var(--red);
 		}
 	}
 </style>

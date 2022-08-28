@@ -3,6 +3,12 @@ import { derived, readable } from "svelte/store";
 import { dropdownFilterOptions } from "./dropdownFilter";
 import { filters } from "./filters";
 
+const replace = (coll: unknown[], i1: number, i2: number) => {
+  const temp = coll[i1]
+  coll[i1] = coll[i2]
+  coll[i2] = temp
+}
+
 export const dados = readable({} as Dados, (set) => {
   fetch("/dados.json")
     .then((dados) => dados.json())
@@ -11,6 +17,11 @@ export const dados = readable({} as Dados, (set) => {
         cargo.candidatos.forEach((cd) => {
           const format = cd.fotoUrl.split('.').reverse()[0];
           cd.fotoUrl = `/photos/${cd.id}.${format}`;
+        })
+
+        cargo.candidatos.forEach((_, i) => {
+          const otherI = Math.floor(Math.random() * cargo.candidatos.length);
+          replace(cargo.candidatos, i, otherI);
         })
       })
       set(dados);
