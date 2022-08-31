@@ -123,6 +123,7 @@
 		width: 100%;
 		display: flex;
 		justify-content: center;
+		font-size: var(--font0);
 
 		.tab {
 			flex-grow: 1;

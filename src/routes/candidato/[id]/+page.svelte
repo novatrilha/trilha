@@ -76,7 +76,7 @@
           <TitleValue title="Grau de escolaridade" value={cd.grauInstrucao} />
           <TitleValue
             title="Site"
-            value={cd.sites[0] || "Nenhum site cadastrado"}
+            value={cd.sites.length === 0 ? "Nenhum site cadastrado" : cd.sites}
           />
         </div>
 
