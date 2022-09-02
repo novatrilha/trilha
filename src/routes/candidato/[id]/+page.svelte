@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import domtoimage from "dom-to-image";
 
   import { candidato, relacionados } from "$lib/stores/dados";
@@ -7,6 +8,8 @@
   import RedirectIcon from "$lib/assets/redirect.svg";
   import CargoEleicao from "$lib/CargoEleicao.svelte";
   import CardCandidato from "$lib/CardCandidato.svelte";
+
+  $: showCopyFeedback = false;
 
   const onShare = () => {
     // const element = document.createElement("input") as HTMLInputElement;
@@ -32,6 +35,12 @@
               }),
             ])
           )
+          .then(() => {
+            showCopyFeedback = true;
+            setTimeout(() => {
+              showCopyFeedback = false;
+            }, 1_500);
+          })
           .catch(console.error);
       })
       .catch(function (error: unknown) {
@@ -117,17 +126,19 @@
   {/if}
 {/if}
 
-<style lang="scss">
-  section {
-		padding: 0 min(4.5em, 2vw);
-  }
+{#if showCopyFeedback}
+  <div class="overlay" transition:fade={{ duration: 150 }}>
+    <div class="pill">Perfil copiado. Envie para seus amigos.</div>
+  </div>
+{/if}
 
+<style lang="scss">
   .infos-container {
     display: flex;
     flex-wrap: wrap;
     gap: max(0.5em, var(--font2));
     justify-content: space-between;
-    padding: 1.25em 1.125em;
+    padding: 1.25em var(--padding-details-page);;
     margin-bottom: 5em;
 
     .candidato-card {
@@ -149,7 +160,7 @@
       .main-infos {
         display: flex;
         flex-direction: column;
-        margin-right: var(--font4);
+        margin-right: auto;
 
         .name {
           font-size: 3em;
@@ -224,7 +235,7 @@
   }
 
   .related {
-    padding: 0 3em;
+    padding: 0 var(--padding-details-page);
 
     > h2 {
       font-size: 2.125em;
@@ -238,6 +249,22 @@
       gap: 0.5em;
       overflow-y: hidden;
       overflow-x: auto;
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0000004f;
+
+    .pill {
+      padding: .5em 1.5em;
+      background-color: var(--purple);
+      color: var(--white);
+      border-radius: 20px;
     }
   }
 </style>

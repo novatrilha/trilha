@@ -46,6 +46,9 @@ body {
   --font3: 1.75em;
   --font4: 2em;
   --font5: 2.25em;
+  --font6: 2.5em;
+
+  --padding-details-page: 8vw;
 }
 
 body[mobile] {
@@ -62,6 +65,7 @@ body[mobile] {
 
   --big-photo: 50vw;
   --about-contents-padding: 2vw;
+  --padding-details-page: 4vw;
 }
 
 @media only screen and (max-width: 1279px) {
@@ -154,6 +158,13 @@ button[data-secondary="true"]:hover {
   background-color: var(--purple);
   border-color: var(--purple);
   color: var(--white);
+}
+
+@media (hover: none) {
+  button:hover {
+    background-color: inherit !important;
+    color: inherit !important;
+  }
 }
 
 .capt {

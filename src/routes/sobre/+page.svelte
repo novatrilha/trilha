@@ -7,7 +7,7 @@
   const scrollToDisclaimer = () => {
     document
       .getElementById("disclaimer")
-      ?.scrollIntoView({ behavior: "smooth" });
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 </script>
 
@@ -152,7 +152,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
     flex-grow: 1;
     padding: 8em 0.5em;
     background: radial-gradient(
@@ -163,7 +163,7 @@
     );
 
     .text {
-      font-size: max(3vw, var(--font4));
+      font-size: max(3vw, var(--font6));
       color: var(--white);
       font-weight: 500;
     }
