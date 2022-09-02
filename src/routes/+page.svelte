@@ -53,19 +53,42 @@
 </svelte:head>
 
 <section>
-	<MainSlider />
+	<!-- <MainSlider /> -->
+	<div class="intro">
+		<h1>Ainda não sabe em quem votar para  deputado federal e estadual?</h1>
+		<span>a Trilha lista pra você todas as candidaturas de partidos de esquerda na Paraíba</span>
+	</div>
 
 	<SearchBar />
 
 	<CardsContainer />
 </section>
 
-<style>
+<style lang="scss">
 	section {
 		display: flex;
 		flex-direction: column;
 		gap: 5em;
 		max-width: min(85em, 98vw);
 		padding: 0 min(4.5em, 2vw);
+	}
+
+	.intro {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 2em;
+
+		h1 {
+			width: min(24ch, 90%);
+			margin: 0;
+			font-size: max(var(--font7), 4vw);
+		}
+
+		span {
+			color: var(--black);
+			font-size: var(--font0);
+		}
 	}
 </style>

@@ -47,6 +47,7 @@ body {
   --font4: 2em;
   --font5: 2.25em;
   --font6: 2.5em;
+  --font7: 3em;
 
   --padding-details-page: 8vw;
 }
@@ -111,6 +112,10 @@ header {
 main {
   margin: 0 auto;
   padding: 0 0 10em;
+
+  > * {
+    margin-inline: auto;
+  }
 }
 
 .clickable {

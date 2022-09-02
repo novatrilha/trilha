@@ -173,14 +173,14 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 4vw;
 
     .item {
-      min-width: 300px;
+      min-width: 250px;
       width: 55%;
 
       &:first-child {
-        width: calc(45% - 1em);
+        width: calc(45% - 4vw);
       }
 
       .title {
