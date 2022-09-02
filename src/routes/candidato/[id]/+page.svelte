@@ -46,7 +46,6 @@
     );
   };
 
-  $: console.log($candidato);
   $: cd = $candidato;
   $: cds = $relacionados.slice(0, 5);
 </script>
@@ -119,6 +118,10 @@
 {/if}
 
 <style lang="scss">
+  section {
+		padding: 0 min(4.5em, 2vw);
+  }
+
   .infos-container {
     display: flex;
     flex-wrap: wrap;
@@ -128,9 +131,11 @@
     margin-bottom: 5em;
 
     .candidato-card {
-      width: var(--mobile-width);
-      gap: 2.75em;
+      display: flex;
+      justify-content: center;
       flex-wrap: wrap;
+      gap: 2.75em;
+      width: var(--mobile-width);
       min-width: 50vw;
 
       .photo {
@@ -139,7 +144,6 @@
         border-radius: 50%;
         border: 1px solid var(--gray);
         object-fit: cover;
-        margin: 0 auto;
       }
 
       .main-infos {

@@ -7,18 +7,15 @@
 	<img src={LogoFooterIcon} alt="Logo da página, Trilha" class="logo" />
 
 	<section>
-		<h2>Sobre</h2>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Venenatis,
-			egestas dictum enim, cursus tristique. Eget mi egestas dolor tincidunt
-			lacus lacus leo amet imperdiet. Quis in pharetra ullamcorper quisque
-			consectetur ut velit natoque. Vitae nibh sagittis senectus aliquet
-			bibendum pulvinar ac, tortor, non. Sed blandit massa arcu scelerisque
-			donec augue ut. Diam, pharetra, nibh aenean laoreet ornare.
-		</p>
+		<h2>Contato</h2>
+		<p>contato@contato.com</p>
 	</section>
 
-	<a href="https://github.com/novatrilha/trilha" target="_blank" class="github-redirect">
+	<a
+		href="https://github.com/novatrilha/trilha"
+		target="_blank"
+		class="github-redirect"
+	>
 		<img
 			class="clickable"
 			src={LogoGithubIcon}
@@ -27,26 +24,26 @@
 	</a>
 </footer>
 
-<style>
+<style lang="scss">
 	footer {
 		display: flex;
 		align-items: center;
-		gap: 3vw;
 		justify-content: space-between;
+		gap: 3vw;
 		color: var(--white);
 		padding: min(166px, 7vw) min(100px, 5vw);
 		background-color: var(--black);
 	}
 
 	section {
-		width: 55em;
-	}
+		font-size: var(--font0);
 
-	section h2 {
-		margin: 0;
-		font-weight: 400;
-		font-size: var(--font2);
-		line-height: 2.125em;
+		h2 {
+			margin: 0;
+			font-weight: 400;
+			font-size: var(--font2);
+			line-height: 2.125em;
+		}
 	}
 
 	.logo {

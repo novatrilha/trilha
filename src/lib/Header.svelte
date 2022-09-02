@@ -5,7 +5,7 @@
 	const routes = [
 		{ label: "Início", url: "/" },
 		{ label: "Sobre", url: "/sobre" },
-		{ label: "FAQ", url: "/faq" },
+		// { label: "FAQ", url: "/faq" },
 	];
 
 	$: console.log($page)

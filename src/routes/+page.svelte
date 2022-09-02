@@ -65,5 +65,7 @@
 		display: flex;
 		flex-direction: column;
 		gap: 5em;
+		max-width: min(85em, 98vw);
+		padding: 0 min(4.5em, 2vw);
 	}
 </style>

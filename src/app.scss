@@ -22,6 +22,8 @@
   --purple: #4D00AF;
   --cols: 5;
   --font-size: max(16px, 1vw);
+
+  --about-contents-padding: 16vw;
 }
 
 body {
@@ -33,6 +35,7 @@ body {
   color: var(--black);
 
   background-color: var(--white);
+  scroll-behavior: smooth;
 
   --font-3: .675em;
   --font-2: .75em;
@@ -58,18 +61,21 @@ body[mobile] {
   --font4: 2em;
 
   --big-photo: 50vw;
+  --about-contents-padding: 2vw;
 }
 
 @media only screen and (max-width: 1279px) {
   :root {
     --font-size: 14px;
     --cols: 4;
+    --about-contents-padding: 12vw;
   }
 }
 
 @media only screen and (max-width: 1100px) {
   :root {
     --cols: 3;
+    --about-contents-padding: 5vw;
   }
 }
 
@@ -77,6 +83,7 @@ body[mobile] {
   :root {
     --cols: 2;
     --font-size: 12px;
+    --about-contents-padding: 2vw;
   }
 }
 
@@ -98,9 +105,8 @@ header {
 }
 
 main {
-  max-width: min(85em, 98vw);
   margin: 0 auto;
-  padding: 0 min(4.5em, 2vw) 10em;
+  padding: 0 0 10em;
 }
 
 .clickable {

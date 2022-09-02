@@ -109,8 +109,10 @@
     text-transform: capitalize;
   }
 
-  .option:hover {
-    background-color: rgba(128, 128, 128, 0.2);
+  .option:hover,
+  .suboption:hover {
+    background-color: #4D00AF;
+    color: var(--white);
   }
 
   .options-container > .option:last-child {

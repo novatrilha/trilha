@@ -18,11 +18,13 @@
 <div class="container">
   <small>{title}:</small>
   {#if isLink}
-    {#each value as link}
-      <a class="value link" href={link} target="_blank">
-        <img src={getIcon(link)} alt="Ícone indicando site do candidato" />
-      </a>
-    {/each}
+    <div class="links">
+      {#each value as link}
+        <a class="value link" href={link} target="_blank">
+          <img src={getIcon(link)} alt="Ícone indicando site do candidato" />
+        </a>
+      {/each}
+    </div>
   {:else}
     <span class="value">{value.toLowerCase()}</span>
   {/if}
@@ -31,9 +33,9 @@
 <style lang="scss">
   .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 5px;
-    
+
     small {
       width: 100%;
     }
@@ -57,6 +59,7 @@
     }
 
     &.link {
+      display: inline-block;
       color: var(--yellow);
 
       img {
@@ -65,5 +68,10 @@
         margin-top: 0.125em;
       }
     }
+  }
+
+  .links {
+    display: flex;
+    gap: .375em;
   }
 </style>
