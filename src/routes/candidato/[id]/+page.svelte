@@ -157,9 +157,10 @@
         margin-right: auto;
 
         .name {
+          max-width: 20ch;
+          margin-bottom: 0;
           font-size: 3em;
           text-transform: capitalize;
-          margin-bottom: 0;
         }
 
         .sub-infos {

@@ -29,9 +29,9 @@ export async function generateCard(cd: Candidato) {
   // Black
   ctx.fillStyle = '#1E1E1E';
   ctx.font = '60px Cabin';
-  ctx.fillText(capName(cd.nomeUrna), firstCol, firstLine);
-  ctx.fillText(`(${cd.partido.sigla})`, firstCol, firstLine + 55);
-  ctx.fillText(`${cd.numero}`, firstCol + 230, firstLine + 55);
+  ctx.fillText(capName(cd.nomeUrna), firstCol, firstLine, cv.width - 70);
+  ctx.fillText(`(${cd.partido.sigla})`, firstCol, firstLine + 60);
+  ctx.fillText(`${cd.numero}`, firstCol + 280, firstLine + 60);
 
   const secLine = firstLine + 190;
   const itemWidth = 210;
