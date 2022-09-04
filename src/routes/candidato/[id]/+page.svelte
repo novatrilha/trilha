@@ -13,20 +13,32 @@
   $: cd = $candidato;
   $: cds = $relacionados.slice(0, 5);
 
+  function successCopy() {
+    showCopyFeedback = true;
+    setTimeout(() => {
+      showCopyFeedback = false;
+    }, 1_500);
+  }
+
   const onShare = () => {
     // generateCard(cd).then((cv) => {
     //   const gc = document.getElementById("gc");
     //   gc?.append(cv);
     // });
+    
     generateCard(cd).then((canvas) => {
       canvas.toBlob(function (blob) {
-        const item = new ClipboardItem({ "image/png": blob || "" });
-        navigator.clipboard.write([item]);
-
-        showCopyFeedback = true;
-        setTimeout(() => {
-          showCopyFeedback = false;
-        }, 1_500);
+        if ('share' in navigator) {
+          navigator.share({
+            text: 'Conheça mais no trilha!',
+            title: `Nova Trilha - ${cd.nomeUrna}`,
+            files: [new File([blob || ''], `Nova Trilha - ${cd.nomeUrna}.png`, { type: 'image/png' })]
+          })
+        } else {
+          const item = new ClipboardItem({ 'image/png': blob || "" });
+          navigator.clipboard.write([item]);
+        }
+        successCopy();
       });
     });
   };
@@ -245,6 +257,7 @@
     .pill {
       padding: 0.5em 1.5em;
       background-color: var(--purple);
+      font-size: var(--font0);
       color: var(--white);
       border-radius: 20px;
     }

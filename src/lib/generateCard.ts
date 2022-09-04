@@ -19,6 +19,10 @@ export async function generateCard(cd: Candidato) {
   ctx.fillStyle = '#EBEBEB';
   ctx.fillRect(0, 0, cv.width, cv.height);
 
+  const offset = 2;
+  ctx.strokeStyle = 'gray';
+  ctx.strokeRect(offset, offset, cv.width - 2 * offset, cv.height - 2 * offset);
+
   const firstLine = 420;
   const firstCol = 30;
 
@@ -64,10 +68,10 @@ export async function generateCard(cd: Candidato) {
 
   await waitImg(img);
   await waitImg(footerImg);
-  
+
   // footer
   ctx.drawImage(footerImg, cv.width / 2 - 150, cv.height - 110, 300, 80);
-  
+
   // Img
   const imgSize = Math.min(img.width, img.height);
   const imgHalf = imgSize / 2;
