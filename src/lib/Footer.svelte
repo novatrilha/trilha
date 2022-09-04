@@ -8,7 +8,7 @@
 
 	<section>
 		<h2>Contato</h2>
-		<p>contato@contato.com</p>
+		<p>ola.trilha@gmail.com</p>
 	</section>
 
 	<a

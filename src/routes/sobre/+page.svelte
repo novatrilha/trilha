@@ -112,7 +112,7 @@
     <span>
       <button class="purple-btn">
         <img src={MailIcon} alt="Ícone de email" />  
-        contato@contato.com
+        ola.trilha@gmail.com
       </button>
     </span>
   </section>

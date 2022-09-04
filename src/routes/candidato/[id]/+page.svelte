@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
-  import domtoimage from "dom-to-image";
 
   import { candidato, relacionados } from "$lib/stores/dados";
   import TitleValue from "$lib/TitleValue.svelte";
@@ -8,44 +7,24 @@
   import RedirectIcon from "$lib/assets/redirect.svg";
   import CargoEleicao from "$lib/CargoEleicao.svelte";
   import CardCandidato from "$lib/CardCandidato.svelte";
+  import { capName, generateCard } from "$lib/generateCard";
 
   $: showCopyFeedback = false;
+  $: cd = $candidato;
+  $: cds = $relacionados.slice(0, 5);
 
   const onShare = () => {
-    // const element = document.createElement("input") as HTMLInputElement;
-    // element.value = $page.url.href;
-    // element.select();
-    // element.setSelectionRange(0, 99999);
-    // navigator.clipboard.writeText(element.value);
+    generateCard(cd).then((canvas) => {
+      canvas.toBlob(function (blob) {
+        const item = new ClipboardItem({ "image/png": blob || "" });
+        navigator.clipboard.write([item]);
 
-    const node = document.querySelector(".candidato-card");
-    domtoimage
-      .toPng(node)
-      .then(function (dataUrl: string) {
-        // const img = new Image();
-        // img.src = dataUrl;
-        // node!.appendChild(img);
-
-        fetch(dataUrl)
-          .then((res) => res.blob())
-          .then((blob) =>
-            navigator.clipboard.write([
-              new ClipboardItem({
-                "image/png": blob,
-              }),
-            ])
-          )
-          .then(() => {
-            showCopyFeedback = true;
-            setTimeout(() => {
-              showCopyFeedback = false;
-            }, 1_500);
-          })
-          .catch(console.error);
-      })
-      .catch(function (error: unknown) {
-        console.error("oops, something went wrong!", error);
+        showCopyFeedback = true;
+        setTimeout(() => {
+          showCopyFeedback = false;
+        }, 1_500);
       });
+    });
   };
 
   const gotoTSE = () => {
@@ -54,21 +33,10 @@
       "_blank"
     );
   };
-
-  $: cd = $candidato;
-  $: cds = $relacionados.slice(0, 5);
-
-  function cap(s: string) {
-    return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
-  }
-
-  function capName(s: string) {
-    return s.split(' ').map(s => cap(s.toLowerCase())).join(' ')
-  }
 </script>
 
 <svelte:head>
-  <title>Nova Trilha - {capName(cd?.nomeUrna || '')}</title>
+  <title>Nova Trilha - {capName(cd?.nomeUrna || "")}</title>
 </svelte:head>
 
 {#if $candidato}
@@ -109,6 +77,8 @@
         </div>
       </div>
     </div>
+
+    <div id="gc" />
 
     <div class="history">
       <h2>Histórico de candidaturas</h2>
