@@ -11,6 +11,10 @@
   };
 </script>
 
+<svelte:head>
+  <title>Nova Trilha - Sobre</title>
+</svelte:head>
+
 <section class="main-info">
   <span class="text">Descubra, escolha e vote!</span>
   <button class="purple-btn" on:click={scrollToDisclaimer}>

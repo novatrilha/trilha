@@ -57,10 +57,18 @@
 
   $: cd = $candidato;
   $: cds = $relacionados.slice(0, 5);
+
+  function cap(s: string) {
+    return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+  }
+
+  function capName(s: string) {
+    return s.split(' ').map(s => cap(s.toLowerCase())).join(' ')
+  }
 </script>
 
 <svelte:head>
-  <title>Nova Trilha - Candidato</title>
+  <title>Nova Trilha - {capName(cd?.nomeUrna || '')}</title>
 </svelte:head>
 
 {#if $candidato}
@@ -138,7 +146,7 @@
     flex-wrap: wrap;
     gap: max(0.5em, var(--font2));
     justify-content: space-between;
-    padding: 1.25em var(--padding-details-page);;
+    padding: 1.25em var(--padding-details-page);
     margin-bottom: 5em;
 
     .candidato-card {
@@ -261,7 +269,7 @@
     background-color: #0000004f;
 
     .pill {
-      padding: .5em 1.5em;
+      padding: 0.5em 1.5em;
       background-color: var(--purple);
       color: var(--white);
       border-radius: 20px;

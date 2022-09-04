@@ -51,8 +51,7 @@
   .value {
     font-size: var(--font2);
     text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    max-width: 20ch;
 
     &:not(.link) {
       text-transform: capitalize;
