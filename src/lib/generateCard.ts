@@ -11,42 +11,42 @@ const waitImg = (img: HTMLImageElement) => new Promise((res) => { img.onload = r
 export async function generateCard(cd: Candidato) {
   const cv = document.createElement('canvas') as HTMLCanvasElement;
   const extraLinksHeight = cd.sites.length * 20;
-  cv.height = 650 + extraLinksHeight;
-  cv.width = 450;
+  cv.height = 1000 + extraLinksHeight;
+  cv.width = 800;
   const ctx = cv.getContext('2d')!;
 
   // Gray
   ctx.fillStyle = '#EBEBEB';
   ctx.fillRect(0, 0, cv.width, cv.height);
 
-  const firstLine = 280;
+  const firstLine = 420;
   const firstCol = 30;
 
   // Black
   ctx.fillStyle = '#1E1E1E';
-  ctx.font = '38px Cabin';
+  ctx.font = '60px Cabin';
   ctx.fillText(capName(cd.nomeUrna), firstCol, firstLine);
-  ctx.fillText(`(${cd.partido.sigla})`, firstCol, firstLine + 45);
-  ctx.fillText(`${cd.numero}`, firstCol + 160, firstLine + 45);
+  ctx.fillText(`(${cd.partido.sigla})`, firstCol, firstLine + 55);
+  ctx.fillText(`${cd.numero}`, firstCol + 230, firstLine + 55);
 
-  const secLine = firstLine + 125;
-  const itemWidth = 100;
+  const secLine = firstLine + 190;
+  const itemWidth = 210;
 
-  ctx.font = '25px Cabin';
+  ctx.font = '45px Cabin';
   ctx.fillText(cap(cd.descricaoSexo), firstCol, secLine);
   ctx.fillText(cap(cd.descricaoCorRaca), firstCol + itemWidth, secLine);
-  ctx.fillText(cap(cd.ocupacao), firstCol + itemWidth * 2, secLine);
-  ctx.fillText(cd.grauInstrucao, firstCol, secLine + 60);
+  ctx.fillText(cap(cd.ocupacao), firstCol + itemWidth * 2, secLine, 320);
+  ctx.fillText(cd.grauInstrucao, firstCol, secLine + 90);
 
-  const titlesLine = secLine - 25;
-  ctx.font = '13px Cabin';
+  const titlesLine = secLine - 40;
+  ctx.font = '18px Cabin';
 
   ctx.fillText('GÊNERO:', firstCol, titlesLine);
   ctx.fillText('ETNIA:', firstCol + itemWidth, titlesLine);
   ctx.fillText('OCUPAÇÃO:', firstCol + itemWidth * 2, titlesLine);
-  ctx.fillText('GRAU DE ESCOLARIDADE:', firstCol, titlesLine + 60);
+  ctx.fillText('GRAU DE ESCOLARIDADE:', firstCol, titlesLine + 90);
 
-  const thirdLine = secLine + 110;
+  const thirdLine = secLine + 160;
   ctx.fillText('SITE:', firstCol, thirdLine);
   if (cd.sites.length === 0) {
     ctx.fillText('Nenhum Site Cadastrado', firstCol, thirdLine + 20);
@@ -66,30 +66,33 @@ export async function generateCard(cd: Candidato) {
   await waitImg(footerImg);
   
   // footer
-  ctx.drawImage(footerImg, cv.width / 2 - 103, cv.height - 80, 206, 54);
+  ctx.drawImage(footerImg, cv.width / 2 - 150, cv.height - 110, 300, 80);
   
   // Img
-  const size = Math.min(img.width, img.height);
-  const half = size / 2;
+  const imgSize = Math.min(img.width, img.height);
+  const imgHalf = imgSize / 2;
 
   ctx.strokeStyle = '#1e1e1e61';
   const centerX = cv.width / 2;
-  const centerY = 125
-  ctx.arc(centerX, centerY, 90, 0, 2 * Math.PI);
+  const centerY = 190
+
+  ctx.arc(centerX, centerY, 160, 0, 2 * Math.PI);
   ctx.stroke();
   ctx.clip();
-  const imgSize = 190;
+
+  const renderImgSize = 320;
   ctx.drawImage(
     img,
-    (img.width / 2) - half,
-    (img.height / 2) - half,
-    size,
-    size,
-    centerY,
-    35,
+    (img.width / 2) - imgHalf,
+    (img.height / 2) - imgHalf,
     imgSize,
-    imgSize
+    imgSize,
+    centerX - (renderImgSize / 2),
+    30,
+    renderImgSize,
+    renderImgSize
   );
 
+  ctx.setTransform(2, 0, 0, 2, 0, 0);
   return cv;
 }

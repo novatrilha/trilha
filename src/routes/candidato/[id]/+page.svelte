@@ -14,6 +14,10 @@
   $: cds = $relacionados.slice(0, 5);
 
   const onShare = () => {
+    // generateCard(cd).then((cv) => {
+    //   const gc = document.getElementById("gc");
+    //   gc?.append(cv);
+    // });
     generateCard(cd).then((canvas) => {
       canvas.toBlob(function (blob) {
         const item = new ClipboardItem({ "image/png": blob || "" });
