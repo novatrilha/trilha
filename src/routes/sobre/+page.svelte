@@ -12,7 +12,7 @@
 </script>
 
 <svelte:head>
-  <title>Nova Trilha - Sobre</title>
+  <title>Trilha - Sobre</title>
 </svelte:head>
 
 <section class="main-info">

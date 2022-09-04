@@ -31,8 +31,8 @@
         if ('share' in navigator) {
           navigator.share({
             text: 'Conheça mais no trilha!',
-            title: `Nova Trilha - ${cd.nomeUrna}`,
-            files: [new File([blob || ''], `Nova Trilha - ${cd.nomeUrna}.png`, { type: 'image/png' })]
+            title: `Trilha - ${cd.nomeUrna}`,
+            files: [new File([blob || ''], `Trilha - ${cd.nomeUrna}.png`, { type: 'image/png' })]
           })
         } else {
           const item = new ClipboardItem({ 'image/png': blob || "" });
@@ -52,7 +52,7 @@
 </script>
 
 <svelte:head>
-  <title>Nova Trilha - {capName(cd?.nomeUrna || "")}</title>
+  <title>Trilha - {capName(cd?.nomeUrna || "")}</title>
 </svelte:head>
 
 {#if $candidato}

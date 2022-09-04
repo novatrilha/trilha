@@ -49,7 +49,7 @@
 </script>
 
 <svelte:head>
-	<title>Nova Trilha</title>
+	<title>Trilha</title>
 </svelte:head>
 
 <section>
